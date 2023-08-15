@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { themeSettings } from './theme';
+import { Button, ThemeProvider,useTheme } from '@mui/material';
+import { createTheme } from "@mui/material/styles";
+import { setMode } from './state';
+import { useSelector,useDispatch } from 'react-redux';
+import { useMemo } from 'react';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
+  const dispatch = useDispatch()
+  const themee = useTheme()
+const mode = useSelector((state)=>state.global.mode)
+console.log("🚀 ~ file: App.js:14 ~ App ~ mode :", mode )
+const theme = useMemo(()=>createTheme(themeSettings(mode)),[mode])
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <BrowserRouter>
+   <ThemeProvider theme={theme}>
+
+   </ThemeProvider>
+   
+   </BrowserRouter>
   );
 }
 
