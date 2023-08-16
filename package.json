@@ -8,6 +8,7 @@
     "@emoji-mart/react": "^1.0.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@faker-js/faker": "^8.0.2",
     "@hookform/resolvers": "^2.9.10",
     "@iconify/react": "^4.0.0",
     "@mui/lab": "^5.0.0-alpha.113",
