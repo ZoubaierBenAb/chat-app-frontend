@@ -9,8 +9,16 @@ import {
 import logo from "../../assests/logo.png";
 import { Nav_Buttons, Nav_Setting } from "../../data";
 import { useState } from "react";
+import { faker } from "@faker-js/faker";
+import { Avatar } from "@mui/material";
+import { ModeSwitch } from "../../components/ModeSwitch";
+import { useDispatch,useSelector } from "react-redux";
+import { setMode } from "../../state";
+
 
 function SideNav() {
+  const dispatch = useDispatch()
+  const mode = useSelector((state)=>state.global.mode)
   const [selected, setSelected] = useState(null);
   const theme = useTheme();
   return (
@@ -19,7 +27,7 @@ function SideNav() {
         height: "100vh",
         width: 100,
         backgroundColor: theme.palette.background.alt,
-        boxShadow: "0px 0px 2px rgba(0,0,0,0.25)",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)"
       }}
     >
       <Stack
@@ -64,10 +72,7 @@ function SideNav() {
                     <IconButton key={el.index}>{el.icon}</IconButton>
                   </Box>
                 ) : (
-                  <Box
-                    key={el.index}
-    
-                  >
+                  <Box key={el.index}>
                     <IconButton
                       onClick={() => setSelected(el.index)}
                       key={el.index}
@@ -81,8 +86,16 @@ function SideNav() {
             <Divider />
           </Box>
           {Nav_Setting.map((el) => (
-            <IconButton key={el.index}>{el.icon}</IconButton>
+            <IconButton key={el.index} onClick={() => setSelected(el.index)}>
+              {el.icon}
+            </IconButton>
           ))}
+        </Stack>
+
+        <Stack spacing={4} alignItems='center'>
+          {" "}
+          <ModeSwitch onClick={()=>dispatch(setMode('light'))} />
+          <Avatar src={faker.image.avatar()} />
         </Stack>
       </Stack>
     </Box>
