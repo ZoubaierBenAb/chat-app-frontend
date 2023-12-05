@@ -21,10 +21,10 @@ export const tokensDark = {
     50: "#03396c",
     100: "#005b96",
     200: "#6497b1",
-    300: "#b3cde0",
+    300: "#005b96",
   },
   secondary: {
-    // yellow
+    // red
     50: '#FDEDED',
   100: '#FCDADA',
   200: '#F9B5B5',

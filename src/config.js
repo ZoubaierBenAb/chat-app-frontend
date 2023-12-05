@@ -8,3 +8,5 @@ export const DEFAULT_PATH = {
         app : path('/','app')
     }
 }
+
+export const BASE_URL = 'http://localhost:5000'
